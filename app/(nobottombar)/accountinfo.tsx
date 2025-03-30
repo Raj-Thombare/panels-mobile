@@ -1,10 +1,10 @@
-import { Image, Text } from "react-native";
+import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function foryou() {
+export default function AccountInfo() {
   return (
     <SafeAreaView>
-      <Text>Home Page</Text>
+      <Text>Account Info Page</Text>
     </SafeAreaView>
   );
 }
