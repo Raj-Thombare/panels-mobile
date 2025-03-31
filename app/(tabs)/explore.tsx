@@ -2,7 +2,7 @@ import { Link } from "expo-router";
 import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function explore() {
+export default function Explore() {
   return (
     <SafeAreaView>
       <Text>Explore page</Text>
