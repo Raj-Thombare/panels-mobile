@@ -18,7 +18,7 @@ export default function TabLayout() {
         options={{
           title: "Explore",
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name='cog' color={color} />
+            <FontAwesome size={28} name='wpexplorer' color={color} />
           ),
         }}
       />
