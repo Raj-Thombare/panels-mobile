@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 
-export default function Library() {
+export default function LibraryTab() {
   return (
     <View>
       <Text>Library Page</Text>

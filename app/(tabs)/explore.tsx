@@ -1,18 +1,18 @@
 import DownloadPicture from "@/components/DownloadPicture";
 import { ImageCard } from "@/components/ImageCard";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
+import { ThemedView } from "@/components/ThemedView";
 import { useWallpapers, Wallpaper } from "@/hooks/useWallpapers";
 import { useState } from "react";
 import { Image, View, StyleSheet, useColorScheme } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Explore() {
   const wallpapers = useWallpapers();
-
   const [selectedWallpaper, setSelectedWallpaper] = useState<null | Wallpaper>(
     null
   );
-
   const theme = useColorScheme() ?? "light";
 
   return (
@@ -21,25 +21,30 @@ export default function Explore() {
         headerBackgroundColor={{ dark: "black", light: "white" }}
         headerImage={
           <Image
-            style={{ flex: 1 }}
+            style={styles.headerImage}
             source={{
               uri: "https://i.cdn.newsbytesapp.com/images/l10620241012103206.png",
             }}
           />
         }>
         <View style={styles.container}>
-          <View style={styles.grid}>
-            {wallpapers.map((w, index) => (
-              <View key={index} style={styles.cardWrapper}>
+          <FlatList
+            data={wallpapers}
+            numColumns={2}
+            scrollEnabled={false}
+            renderItem={({ item }) => (
+              <View style={styles.cardWrapper}>
                 <ImageCard
-                  onPress={() => setSelectedWallpaper(w)}
-                  wallpaper={w}
+                  onPress={() => setSelectedWallpaper(item)}
+                  wallpaper={item}
                 />
               </View>
-            ))}
-          </View>
+            )}
+            keyExtractor={(item) => item.name}
+          />
         </View>
       </ParallaxScrollView>
+
       {selectedWallpaper && (
         <DownloadPicture
           wallpaper={selectedWallpaper}
@@ -53,15 +58,15 @@ export default function Explore() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 5,
+    paddingHorizontal: 10,
   },
-  grid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
+  headerImage: {
+    width: "100%",
+    height: 250,
+    resizeMode: "cover",
   },
   cardWrapper: {
-    width: "48%",
-    marginBottom: 10,
+    flex: 1,
+    margin: 5,
   },
 });
