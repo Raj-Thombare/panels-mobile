@@ -13,7 +13,7 @@ export function useWallpapers() {
         name: "Beach"
     }, {
         url: "https://ideogram.ai/assets/progressive-image/balanced/response/jGxVI96tSdGdwgICEhr5fw",
-        name: "Walker Bagpack"
+        name: "Walker Backpack"
     },
     {
         url: "https://ideogram.ai/assets/progressive-image/balanced/response/rXhBNn4zRpqc3zSZ3CcrbQ",
@@ -33,7 +33,7 @@ export function useWallpapers() {
     },
     {
         url: "https://ideogram.ai/assets/image/lossless/response/79GknZKnQTuf7UEqO7dteg",
-        name: "Deep Orange Glass"
+        name: "Orange Glass"
     }
     ]
 }

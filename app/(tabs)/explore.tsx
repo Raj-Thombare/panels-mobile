@@ -1,11 +1,20 @@
+import DownloadPicture from "@/components/DownloadPicture";
 import { ImageCard } from "@/components/ImageCard";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { useWallpapers } from "@/hooks/useWallpapers";
-import { Image, View, StyleSheet } from "react-native";
+import { useWallpapers, Wallpaper } from "@/hooks/useWallpapers";
+import { useState } from "react";
+import { Image, View, StyleSheet, useColorScheme } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Explore() {
   const wallpapers = useWallpapers();
+
+  const [selectedWallpaper, setSelectedWallpaper] = useState<null | Wallpaper>(
+    null
+  );
+
+  const theme = useColorScheme() ?? "light";
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ParallaxScrollView
@@ -22,12 +31,21 @@ export default function Explore() {
           <View style={styles.grid}>
             {wallpapers.map((w, index) => (
               <View key={index} style={styles.cardWrapper}>
-                <ImageCard wallpaper={w} />
+                <ImageCard
+                  onPress={() => setSelectedWallpaper(w)}
+                  wallpaper={w}
+                />
               </View>
             ))}
           </View>
         </View>
       </ParallaxScrollView>
+      {selectedWallpaper && (
+        <DownloadPicture
+          wallpaper={selectedWallpaper}
+          onClose={() => setSelectedWallpaper(null)}
+        />
+      )}
     </SafeAreaView>
   );
 }

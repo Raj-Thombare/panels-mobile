@@ -16,9 +16,9 @@ export default function Account() {
             setPictureOpen(true);
           }}></Button>
 
-        {pictureOpen && (
+        {/* {pictureOpen && (
           <DownloadPicture onClose={() => setPictureOpen(false)} />
-        )}
+        )} */}
       </View>
     </SafeAreaView>
   );

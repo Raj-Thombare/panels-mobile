@@ -3,11 +3,18 @@ import { Image, StyleSheet, useColorScheme, View } from "react-native";
 import { ThemedText } from "./ThemedText";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/constants/Colors";
+import { Pressable } from "react-native-gesture-handler";
 
-export function ImageCard({ wallpaper }: { wallpaper: Wallpaper }) {
+export function ImageCard({
+  wallpaper,
+  onPress,
+}: {
+  wallpaper: Wallpaper;
+  onPress: () => void;
+}) {
   const theme = useColorScheme() ?? "light";
   return (
-    <View>
+    <Pressable onPress={onPress}>
       <Image source={{ uri: wallpaper.url }} style={styles.image} />
       <View style={styles.labelContainer}>
         <ThemedText style={styles.label}>{wallpaper.name}</ThemedText>
@@ -19,7 +26,7 @@ export function ImageCard({ wallpaper }: { wallpaper: Wallpaper }) {
           />
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 }
 
@@ -35,6 +42,8 @@ const styles = StyleSheet.create({
   },
   label: {
     color: "white",
+    fontSize: 16,
+    marginStart: 5,
   },
   labelContainer: {
     position: "absolute",
