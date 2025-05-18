@@ -4,6 +4,7 @@ import { ThemedText } from "./ThemedText";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/constants/Colors";
 import { Pressable } from "react-native-gesture-handler";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export function ImageCard({
   wallpaper,
@@ -19,9 +20,9 @@ export function ImageCard({
       <View style={styles.labelContainer}>
         <ThemedText style={styles.label}>{wallpaper.name}</ThemedText>
         <View style={styles.iconContainer}>
-          <Ionicons
+          <FontAwesome
+            size={16}
             name='heart'
-            size={18}
             color={theme === "light" ? Colors.light.icon : Colors.dark.icon}
           />
         </View>
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     height: 250,
-    borderRadius: 20,
+    borderRadius: 10,
   },
   label: {
     color: "white",
@@ -53,7 +54,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     padding: 5,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 6,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   },
 });
